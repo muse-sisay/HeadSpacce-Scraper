@@ -70,8 +70,7 @@ def download_clip(driver, url):
 
         # Apped this url to the log that contains list of downloaded url's
         with open("last_downloaded.log", "a") as myfile:
-            tb = traceback.format_exc()
-            myfile.write(url + '\n' + tb + '\n')
+            myfile.write(url + '\n')
         print("Sleeping for 30 seconds")
         time.sleep(60)
 
@@ -80,7 +79,8 @@ def download_clip(driver, url):
 
     except Exception as e:
         with open("error.log", "a") as myfile:
-            myfile.write(str(e) + '\n')
+            tb = traceback.format_exc()
+            myfile.write(tb + '\n')
 
 
 driver = configure_firefox_driver()
